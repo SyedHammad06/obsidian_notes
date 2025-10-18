@@ -1,5 +1,5 @@
 ---
-title: Hammad's Notes
+title: Home
 description: This is the home page of Syed Hammad's Notes
 date: 2025-10-16
 ---
