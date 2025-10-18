@@ -93,7 +93,7 @@ prompt_template = ChatPromptTemplate.from_template(template_string)
 print(prompt_template)
 print(prompt_template.messages[0].prompt)
 ```
-_Documentation_
+_Documentation_: [ChatPromptTemplate](https://python.langchain.com/api_reference/core/prompts/langchain_core.prompts.chat.ChatPromptTemplate.html#langchain_core.prompts.chat.ChatPromptTemplate.format_messages)
 
 Once the template is defined, we can reuse it with different inputs:
 ```python
@@ -108,19 +108,17 @@ response = llm.invoke(msg)
 print(response.content)
 ```
 
-### Difference between `prompt_template` `invoke` and `format_message` methods.
-
-| Method                      | Purpose                                                                                                                                                                                                                  | Output                                         | Typical Use Case                                                                                              |
-| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `format_messages(**kwargs)` | Fills variables and returns a list of structured **message objects** (`SystemMessage`, `HumanMessage`, etc.).                                                                                                            | `List[BaseMessage]`                            | Use when you need to **see or modify** messages before sending to the model. Example: in chains or debugging. |
-| **`invoke(input_dict)`**    | Executes the full **Runnable** interface for prompts (LangChain `Runnable` protocol). It calls `format_messages()` internally and returns the same message list, but wrapped for seamless chaining with other runnables. | Same as `format_messages()` (list of messages) | Use when composing the prompt as part of a **LangChain pipeline** (e.g., `prompt                              |
-
-Summary:
-- `format_messages()` → plain message rendering utility.
-- `invoke()` → full runnable call (standardized entry point) for pipelines.
-
-If you are just formatting prompts, use `format_messages()`.  
-If you are chaining components or using `Runnable` methods like `.stream()` or `.batch()`, use `invoke()`.
+### Difference between `prompt_template`, `invoke()`, and `format_messages()`
+Both `format_messages()` and `invoke()` are used with LangChain prompt templates, but they serve slightly different purposes depending on your workflow.
+- **`format_messages(**kwargs)`**  
+    This method substitutes variables into the template and returns a structured list of message objects such as `SystemMessage`, `HumanMessage`, and `AIMessage`.  
+    Use this when you want to inspect, log, or modify messages before sending them to the model — for example, during debugging or when building custom chains.
+- **`invoke(input_dict)`**  
+    This method represents the full _Runnable_ interface in LangChain. It internally calls `format_messages()` and returns the same list of message objects, but in a standardized format that can be easily composed with other LangChain components (e.g., pipelines, chains, or streaming).
+    
+**In short:**
+- Use `format_messages()` when you only need to generate or inspect the prompt content.
+- Use `invoke()` when you want to integrate the prompt within a LangChain pipeline or use methods like `.stream()` or `.batch()` for execution.
 # Output Parsers
 LLMs often return unstructured text in formats like JSON or Markdown. When you expect structured data, you can use _LangChain’s output parsers_ to extract and validate specific fields.
 
