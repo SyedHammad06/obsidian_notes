@@ -1,5 +1,5 @@
 ---
-title: Langchain Basics - 1
+title: Langchain Basics - 2
 description: Here I will have notes and codes about the basics of Langchain
 tags:
   - Langchain
