@@ -1,10 +1,12 @@
 ---
-title: Langchain Basics
+title: Langchain Basics - 1
 description: Here I will have notes and codes about the basics of Langchain
 tags:
-  - AI
   - Langchain
   - Basics
+  - LLM
+  - Prompts
+  - Output-Parsers
 date: 2025-10-16
 ---
 # LLM
@@ -107,15 +109,24 @@ print(msg)
 response = llm.invoke(msg)
 print(response.content)
 ```
-
-### Difference between `prompt_template`, `invoke()`, and `format_messages()`
+### **Difference between `PromptTemplate` and `ChatPromptTemplate`**
+-  **PromptTemplate**
+	- Creates a *single text prompt for an LLM.
+	- Takes variables and formats a *single string*.
+	- Does *not support chat roles* like human, AI, or system.
+	- Typical use case: single-turn tasks such as summarization, text generation, or question answering.
+- **ChatPromptTemplate**
+	- Creates *chat-style prompts* for conversational LLMs.
+	- Takes variables and formats a *list of messages* (e.g., `HumanMessage`, `AIMessage`, `SystemMessage`).
+	- *Supports roles*, so you can define system instructions, user input, and assistant responses.
+	- Typical use case: multi-turn conversations, chatbots, or tasks needing role-specific context.
+### Difference between `invoke()`, and `format_messages()`
 Both `format_messages()` and `invoke()` are used with LangChain prompt templates, but they serve slightly different purposes depending on your workflow.
 - **`format_messages(**kwargs)`**  
     This method substitutes variables into the template and returns a structured list of message objects such as `SystemMessage`, `HumanMessage`, and `AIMessage`.  
     Use this when you want to inspect, log, or modify messages before sending them to the model — for example, during debugging or when building custom chains.
 - **`invoke(input_dict)`**  
     This method represents the full _Runnable_ interface in LangChain. It internally calls `format_messages()` and returns the same list of message objects, but in a standardized format that can be easily composed with other LangChain components (e.g., pipelines, chains, or streaming).
-    
 **In short:**
 - Use `format_messages()` when you only need to generate or inspect the prompt content.
 - Use `invoke()` when you want to integrate the prompt within a LangChain pipeline or use methods like `.stream()` or `.batch()` for execution.
@@ -212,12 +223,9 @@ print(output_dict)
 Here, the `StructuredOutputParser` validates and converts the raw LLM text into a Python dictionary with clearly defined fields.
 
 # Conclusion
-
 This note demonstrates the foundational elements of building structured, reliable LLM workflows using *LangChain* and *Groq*:
-
 - Initialize and run LLMs securely with API keys.
 - Design flexible and maintainable prompts with `ChatPromptTemplate`.
 - Parse structured outputs confidently using `ResponseSchema` and `StructuredOutputParser`.
-
 Together, these tools form the backbone of scalable LLM applications — from text generation and translation to automated data extraction.  
 Mastering them sets the stage for building robust, production-grade AI systems.

@@ -11,10 +11,19 @@ It’s not a polished guide, just honest notes from the process of figuring thin
 ---
 
 ## Table of Contents
-- [[Langchain Basics]]
+- [[Langchain Basics - 1]]
+- [[Langchain Basics - 2]]
 
 ---
 
+## Work & Code
+
+All the code, experiments, and supporting notebooks for these notes live here.  
+They show the hands-on side of everything I’m learning and building.
+
+*Code*: [View Project Folder](https://drive.google.com/drive/folders/1jbpZ0k85rMH8ryTZPlSa73DQXRLKWr2b?usp=sharing)
+
+---
 ## About This Space
 
 AI is vast and constantly changing.  
