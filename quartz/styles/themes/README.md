@@ -1,13 +1,13 @@
-# Royal Velvet
+# OneNice
 
-- Theme: Royal Velvet
-- Author: <a href="https://github.com/caro401" target="_blank" rel="noopener noreferrer">@caro401</a>
+- Theme: OneNice
+- Author: S.Sunhaloo - P.Roy
 
 ## Preview
 
-[Open live preview (Quartz)](https://quartz-themes.github.io/royal-velvet/)
+[Open live preview (Quartz)](https://quartz-themes.github.io/onenice/)
 
-[Open live preview (Publish)](https://publish.saberzero.one/royal-velvet)
+[Open live preview (Publish)](https://publish.saberzero.one/onenice)
 
 ## Usage (Quartz)
 
@@ -15,7 +15,7 @@
 
 ```yaml
 env:
-  THEME_NAME: royal-velvet
+  THEME_NAME: onenice
 ```
 
 ```yaml
@@ -28,7 +28,7 @@ env:
 ```bash
 curl -s -S -o action.sh https://raw.githubusercontent.com/saberzero1/quartz-themes/master/action.sh
 
-./action.sh royal-velvet
+./action.sh onenice
 ```
 
 ### Manual install
