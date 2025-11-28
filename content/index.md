@@ -13,6 +13,7 @@ It’s not a polished guide, just honest notes from the process of figuring thin
 ## Table of Contents
 - [[Langchain Basics - 1]]
 - [[Langchain Basics - 2]]
+- [[Copilot Studio Basics]]
 
 ---
 

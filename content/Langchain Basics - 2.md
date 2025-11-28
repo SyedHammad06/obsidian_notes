@@ -58,7 +58,7 @@ memory.save_context({"input": "Hi"}, {"output": "What's up"})
 memory.save_context({"input": "Not much, just hanging"}, {"output": "Cool"})
 ```
 ## Different Types of Memory
-### 1.` ConversationBufferMemory`
+### 1. `ConversationBufferMemory`
 `ConversationBufferMemory` is a basic memory implementation. This memory allows for storing of messages and then extracts the messages in a variable. _Code Example Above_.
 ### 2. `ConversationBufferWindowMemory`
 This memory keeps track of the last `k` turns of a conversation. If the number of messages in the conversation is more than the maximum number of messages to keep, the oldest messages are dropped.
