@@ -176,6 +176,93 @@ print(response["structured_response"])
 ```
 
 ---
+
+### Full Code
+```python
+from dataclasses import dataclass
+
+from dotenv import load_dotenv
+from langchain.agents import create_agent
+from langchain.agents.structured_output import ToolStrategy
+from langchain.tools import ToolRuntime, tool
+from langchain_groq import ChatGroq
+from langgraph.checkpoint.memory import InMemorySaver
+
+# Loading the environment variables
+load_dotenv()
+
+# Checkpointer
+checkpointer = InMemorySaver()
+
+# Model Initialization
+base_model = ChatGroq(model="openai/gpt-oss-20b", temperature=0.0, max_retries=3)
+
+# System Prompt
+SYSTEM_PROMPT = """
+    You are an expert weather forecaster, who speaks in puns.
+    You have access to two tools:
+        - get_weather_for_location: use this to get the weather for a specific location.
+        - get_user_location: use this to get the user's locatio.
+    If a user asks you for the weather, make sure you knkow the location. If you can tell from the question that they wherever they are, use the get_user_location tool to find their location.
+"""
+
+# Runtime context
+@dataclass
+class Context:
+    """Custom runtime context schema."""
+    user_id: str
+
+# Structured response format.
+@dataclass
+class ResponseFormat:
+    """Response schema for the agent."""
+    # A punny response (always reqeuired)
+    punny_response: str
+    # Any interesting information about the weather if required.
+    weather_conditions: str | None = None
+
+# Tools 
+@tool
+def get_weather_for_location(city: str) -> str:
+    """Get weather for a given city."""
+    return f"It's always sunny in {city}!"
+
+@tool
+def get_user_location(runtime: ToolRuntime[Context]) -> str:
+    """Retrieve user information based on user Id."""
+    user_id = runtime.context.user_id
+    return "Florida" if user_id == "1" else "SF"
+
+# Agent
+agent = create_agent(
+    model=base_model,
+    system_prompt=SYSTEM_PROMPT,
+    tools=[get_user_location, get_weather_for_location],
+    context_schema=Context,
+    response_format=ToolStrategy(ResponseFormat),
+    checkpointer=checkpointer,
+)
+
+# thread_id is a unique identifier for a given conversation
+config = {"configurable": {"thread_id": "1"}}
+
+response = agent.invoke(
+    {"messages": [{"role": "user", "content": "What is the weather outside"}]},
+    config=config,
+    context=Context(user_id="1"),
+)
+print(response["structured_response"])
+
+# continuing the conversation with the same thread_id
+response = agent.invoke(
+    {"messages": [{"role": "user", "content": "thank you!"}]},
+    config=config,
+    context=Context(user_id="1"),
+)
+print(response["structured_response"])
+```
+
+---
 # Final Thoughts
 With LangChain, Groq, and structured output enforcement, you can build powerful, stateful, tool-driven AI agents that behave predictably and integrate cleanly into larger systems.
 Key takeaways:
