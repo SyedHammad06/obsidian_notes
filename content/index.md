@@ -14,6 +14,7 @@ It’s not a polished guide, just honest notes from the process of figuring thin
 - [[Langchain Basics - 1]]
 - [[Langchain Basics - 2]]
 - [[Copilot Studio Basics]]
+- [[Langchain Quicks Starters (v1)]]
 
 ---
 
