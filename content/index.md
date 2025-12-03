@@ -11,10 +11,11 @@ It’s not a polished guide, just honest notes from the process of figuring thin
 ---
 
 ## Table of Contents
-- [[Langchain Basics - 1]]
-- [[Langchain Basics - 2]]
+- [[Langchain Basics - 1 (Deprecated)]]
+- [[Langchain Basics - 2 (Deprecated)]]
 - [[Copilot Studio Basics]]
-- [[Langchain Quicks Starters (v1)]]
+- [[Langchain Quick Starters (v1)]]
+- [[Langchain - Agents]]
 
 ---
 

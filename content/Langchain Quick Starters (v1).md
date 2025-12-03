@@ -1,5 +1,5 @@
 ---
-title: Langchain Quicks Starters (v1)
+title: Langchain Quick Starters (v1)
 description: Quick Starter Guide for the new version of Langchain (v1).
 tags:
   - Basics
@@ -216,7 +216,7 @@ class Context:
 @dataclass
 class ResponseFormat:
     """Response schema for the agent."""
-    # A punny response (always reqeuired)
+    # A punny response (always required)
     punny_response: str
     # Any interesting information about the weather if required.
     weather_conditions: str | None = None
