@@ -1,5 +1,5 @@
 ---
-title: Copilot Studio Basics
+title: 1 - Copilot Studio Basics
 description: A detailed guide to Microsoft Copilot Studio, covering the creation of custom AI agents
 tags:
   - Copilot-Studio

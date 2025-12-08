@@ -1,6 +1,6 @@
 ---
-title: Langchain Quick Starters (v1)
-description: Quick Starter Guide for the new version of Langchain (v1).
+title: 2 - LangChain Quick Starters (v1)
+description: Quick Starter Guide for the new version of LangChain (v1).
 tags:
   - Basics
   - Langchain

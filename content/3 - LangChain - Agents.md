@@ -1,6 +1,6 @@
 ---
-title: Langchain - Agents
-description: This blog discusses about one of the core components of Langchain, that being Agents.
+title: 3 - LangChain - Agents
+description: This blog discusses about one of the core components of LangChain, that being Agents.
 tags:
   - Agents
   - Tool
